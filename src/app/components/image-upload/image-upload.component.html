@@ -1,15 +1,23 @@
-<div class="drag-drop-area" [class.uploading]="uploading" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+<div class="container">
+   <div class="d-flex mb-5">
+      <input 
+         type="file"
+         multiple="true"
+         (change)="onImageSelected($event)"
+      >
+      <button class="btn btn-primary" (click)="upload()">Upload Image</button>
+   </div>
 
-  <p>Drag and drop to automatic upload</p>
-
-</div>
-<input type="file"
-
-multiple="true"
-(change)="onImageSelected($event)">
-
-<button (click)="upload()">Upload Image</button>
-
-<div class="images">
-  <img *ngFor="let image of imagesUrl"  [src]="image" alt="Uploaded Image">
+   <div class="drag-drop-area" [class.uploading]="uploading" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+      <p>Drag and drop to automatic upload</p>
+   </div>
+   <div *ngIf="imagesUrl.length" class="row mt-5">
+      <h2>Carga de imágenes</h2>
+      <hr>
+      <div class="images">
+         <figure *ngFor="let image of imagesUrl">
+            <img   [src]="image" alt="Uploaded Image">
+         </figure>
+      </div>
+   </div>
 </div>
