@@ -1,0 +1,15 @@
+<div class="drag-drop-area" [class.uploading]="uploading" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+
+  <p>Drag and drop to automatic upload</p>
+
+</div>
+<input type="file"
+
+multiple="true"
+(change)="onImageSelected($event)">
+
+<button (click)="upload()">Upload Image</button>
+
+<div class="images">
+  <img *ngFor="let image of imagesUrl"  [src]="image" alt="Uploaded Image">
+</div>
